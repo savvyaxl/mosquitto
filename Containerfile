@@ -5,7 +5,6 @@ MAINTAINER  alex <savvyaxl@yahoo.com>
 RUN         groupadd -g 1000 mosquitto && \
             useradd -g mosquitto -u 1000 -d /mosquitto -m mosquitto && \
             chown -R mosquitto:mosquitto /mosquitto && \
-            subscription-manager repos --enable codeready-builder-for-rhel-9-$(arch)-rpms && \
             dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm -y && \
             yum --enablerepo=epel install mosquitto -y
 EXPOSE      8883
