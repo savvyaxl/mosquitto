@@ -1,0 +1,9 @@
+
+touch files/passwd
+mosquitto_passwd -b files/passwd admin admin
+
+podman build .
+
+
+
+podman run -it -p 8883:8883 416ee4c4a2c8
