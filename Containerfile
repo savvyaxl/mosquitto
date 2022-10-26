@@ -3,7 +3,7 @@ FROM        ubi9/ubi:latest
 LABEL       description="This is a mosquitto mqtt container image"
 MAINTAINER  alex <savvyaxl@yahoo.com>
 RUN         groupadd -g 1000 mosquitto && \
-            adduser -G mosquitto -u 1000 -h /mosquitto -D mosquitto && \
+            useradd -G mosquitto -u 1000 -h /mosquitto -D mosquitto && \
             chown -R mosquitto:mosquitto /mosquitto && \
             yum install -y mosquitto
 EXPOSE      8883
