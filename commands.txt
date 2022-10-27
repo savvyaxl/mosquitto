@@ -2,13 +2,25 @@
 touch files/passwd
 mosquitto_passwd -b files/passwd admin admin
 
+
+ mosquitto_sub -t foo --cafile files/ca.crt --insecure -u admin -P admin
+ mosquitto_pub -t foo --cafile files/ca.crt --insecure -u admin -P admin -m 'bob'
+
+192.168.0.54 mosquitto.savvyaxl.com.br
+
 podman build .
 
 
 
-podman run -it -p 8883:8883 416ee4c4a2c8
+podman run -it -p 8883:8883 fd3525bdcb37
+podman run -d -p 8883:8883 fd3525bdcb37
 
 
 
 mosquitto_pub -t foo -m "Some text" --cafile files/ca.crt --insecure -u admin -P admin
 
+podman commit -a 'Alex' hardcore_shamir ubi8/mosquitto:v0.1
+
+podman tag hardcore_shamir quay.io/savvabra/ubi8/mosquitto:v0.1
+
+podman push quay.io/savvabra/ubi8/mosquitto:v0.1
