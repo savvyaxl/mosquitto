@@ -1,5 +1,5 @@
 # https://developers.redhat.com/blog/2021/04/16/deploying-the-mosquitto-mqtt-message-broker-on-red-hat-openshift-part-1#building__testing__and_publishing_the_image
-FROM        ubi9/ubi:latest
+FROM        ubi9/ubi-minimal:latest
 LABEL       description="This is a mosquitto mqtt container image"
 MAINTAINER  alex <savvyaxl@yahoo.com>
 RUN         groupadd -g 1000 mosquitto && \
