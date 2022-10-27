@@ -7,3 +7,8 @@ podman build .
 
 
 podman run -it -p 8883:8883 416ee4c4a2c8
+
+
+
+mosquitto_pub -t foo -m "Some text" --cafile files/ca.crt --insecure -u admin -P admin
+
