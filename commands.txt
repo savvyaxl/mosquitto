@@ -4,6 +4,8 @@ mosquitto_passwd -b files/passwd admin admin
 
 
  mosquitto_sub -t foo --cafile files/ca.crt --insecure -u admin -P admin
+ mosquitto_sub -t foo --cafile files/ca.crt --insecure -u admin -P admin -h 192.168.0.101
+ mosquitto_pub -t foo --cafile files/ca.crt --insecure -u admin -P admin -m 'bob' -h 192.168.0.101
  mosquitto_pub -t foo --cafile files/ca.crt --insecure -u admin -P admin -m 'bob'
 
 192.168.0.54 mosquitto.savvyaxl.com.br
@@ -12,15 +14,16 @@ podman build .
 
 
 
-podman run -it -p 8883:8883 fd3525bdcb37
-podman run -d -p 8883:8883 fd3525bdcb37
+podman run -it -p 8883:8883 e2f526bb681a
+podman run -d -p 8883:8883 e2f526bb681a
 
 
 
-mosquitto_pub -t foo -m "Some text" --cafile files/ca.crt --insecure -u admin -P admin
+mosquitto_pub -t foo -m "Some text" --cafile files/ca.crt -u admin -P admin
 
-podman commit -a 'Alex' hardcore_shamir ubi8/mosquitto:v0.1
+podman commit -a 'Alex' nostalgic_villani alpine/mosquitto_ssl:1.0
 
-podman tag hardcore_shamir quay.io/savvabra/ubi8/mosquitto:v0.1
+podman tag c8e045bd56c2 quay.io/savvabra/alpine/mosquitto_ssl:1.0
 
-podman push quay.io/savvabra/ubi8/mosquitto:v0.1
+podman push quay.io/savvabra/alpine/mosquitto_ssl:1.0
+
