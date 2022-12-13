@@ -15,15 +15,17 @@ podman build .
 
 
 podman run -it -p 8883:8883 e2f526bb681a
+podman run -it -p 8883:8883 quay.io/savvabra/alpine/mosquitto_ssl:latest
+docker run -it -p 8883:8883 quay.io/savvabra/alpine/mosquitto_ssl:latest
 podman run -d -p 8883:8883 e2f526bb681a
 
-
+docker log quay.io/savvabra/alpine/mosquitto_ssl:latest
 
 mosquitto_pub -t foo -m "Some text" --cafile files/ca.crt -u admin -P admin
 
 podman commit -a 'Alex' nostalgic_villani alpine/mosquitto_ssl:1.0
 
-podman tag c8e045bd56c2 quay.io/savvabra/alpine/mosquitto_ssl:1.0
+podman tag bc378b862662 quay.io/savvabra/alpine/mosquitto_ssl:latest
 
-podman push quay.io/savvabra/alpine/mosquitto_ssl:1.0
+podman push quay.io/savvabra/alpine/mosquitto_ssl:latest
 
