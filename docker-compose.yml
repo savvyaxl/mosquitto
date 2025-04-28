@@ -4,7 +4,7 @@ version: '2.4'
 services:
   ssl_client:
     build: ./
-    container_name: mosquito_ssl_client
+    container_name: mosquitto_ssl_client
     restart: on-failure:5
     ports:
       - 8883:8883
