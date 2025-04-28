@@ -7,5 +7,6 @@ RUN addgroup -g 1000 mosquitto && \
 WORKDIR /mosquitto
 COPY files/* /mosquitto/
 USER mosquitto
+EXPOSE 1883
 EXPOSE 8883
 CMD ["/mosquitto/start.sh"]
