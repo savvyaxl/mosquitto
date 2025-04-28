@@ -7,7 +7,8 @@ RUN addgroup -g 1000 mosquitto && \
 WORKDIR /mosquitto
 COPY files/* /mosquitto/
 RUN chown mosquitto:mosquitto /mosquitto/* && \
-     chmod 0700 /mosquitto/passwd
+     chmod 0700 /mosquitto/passwd && \
+     chmod 0700 /mosquitto/start.sh
 USER mosquitto
 EXPOSE 1883
 EXPOSE 8883
