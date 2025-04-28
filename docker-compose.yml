@@ -1,0 +1,12 @@
+# https://github.com/savvyaxl/mosquito
+version: '2.4'
+
+services:
+  app:
+    build: ./
+    container_name: mosquito_ssl_client
+    restart: on-failure:5
+    ports:
+      - 8883:8883
+    security_opt:
+      - no-new-privileges
