@@ -6,6 +6,8 @@ RUN addgroup -g 1000 mosquitto && \
      apk --no-cache add mosquitto
 WORKDIR /mosquitto
 COPY files/* /mosquitto/
+RUN chown mosquitto:mosquitto /mosquitto/* && \
+     chmod 0700 /mosquitto/passwd
 USER mosquitto
 EXPOSE 1883
 EXPOSE 8883
