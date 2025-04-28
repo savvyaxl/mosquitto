@@ -2,7 +2,6 @@
 FROM docker.io/alpine:latest
 RUN addgroup -g 1000 mosquitto && \
      adduser -G mosquitto -u 1000 -h /mosquitto -D mosquitto && \
-     chown -R mosquitto:mosquitto /mosquitto && \
      apk --no-cache add mosquitto
 WORKDIR /mosquitto
 COPY files/* /mosquitto/
