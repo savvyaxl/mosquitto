@@ -3,7 +3,9 @@ version: '2.4'
 
 services:
   ssl_client:
-    build: ./
+    build: 
+      context: ./
+      network: host
     container_name: mosquitto_ssl_client
     restart: on-failure:5
     ports:
@@ -11,3 +13,4 @@ services:
       - 8883:8883
     security_opt:
       - no-new-privileges
+    network_mode: host
