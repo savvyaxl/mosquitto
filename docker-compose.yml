@@ -7,10 +7,14 @@ services:
       context: ./
       network: host
     container_name: mosquitto_ssl_client
+    volumes:
+      - mosquitto:/var/lib/mosquitto/persistence/:z
     restart: on-failure:5
-    ports:
-      - 1883:1883
-      - 8883:8883
+      #ports:
+      #- 1883:1883
+      #- 8883:8883
     security_opt:
       - no-new-privileges
     network_mode: host
+volumes:
+  mosquitto:
